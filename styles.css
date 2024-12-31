@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.game-container {
+    text-align: center;
+}
+
+#game-area {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background-color: #dcf0f8;
+    border: 2px solid #000;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#basket {
+    position: absolute;
+    bottom: 0;
+    left: 150px;
+    width: 100px;
+    height: 30px;
+    background-color: #8B4513;
+}
+
+.falling-item {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+}
+
+#score {
+    font-size: 18px;
+    color: #000;
+    margin-top: 10px;
+}
+
+#lives {
+    font-size: 24px;
+    color: #FF6347; /* Tomato color for hearts */
+    margin-top: 10px;
+    margin-left: 50%;
+}
+
+.heart {
+    margin-right: 5px;
+    font-size: 24px;
+}
