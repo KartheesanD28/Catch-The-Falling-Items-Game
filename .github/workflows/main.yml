@@ -6,35 +6,39 @@ on:
       - master
 
 jobs:
+  # Build Job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # No install dependencies step needed for static HTML
+      - name: Install Dependencies
+        run: |
+          # Assuming you don't have any dependencies for a basic HTML page, we can skip this step.
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload artifact to enable deployment
+        uses: actions/upload-artifact@v4
         with:
-          name: html-files
+          name: html-file
           path: |
-            index.html
-            style.css
-            game.js
+            ./index.html
+            ./styles.css
+            ./game.js
 
+  # Deploy Job
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: html-files
-          path: ./website
+          name: html-file
+          path: ./html
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.KEY1 }}
-          publish_dir: ./website
+          github_token: ${{ secrets.KEY1 }}  # Use the default GitHub token for authentication
+          publish_dir: ./html
